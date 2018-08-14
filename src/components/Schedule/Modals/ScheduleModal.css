@@ -1,0 +1,19 @@
+.schedule-modal {
+    background-color: lightcoral;
+    width: 33%;
+    min-width: 175px;
+    height: 47.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    z-index: -1;
+}
+
+.schedule-modal.open {
+    z-index: 3;
+}

@@ -5,6 +5,7 @@
     width: 100%;
     background-color: #222;
     height: 56px;
+    z-index: 5;
 }
 
 .toolbar__navigation {
@@ -21,6 +22,7 @@
 
 .toolbar__logo div {
     color: lightcoral;
+    font-family: Montserrat, serif;
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -41,8 +43,9 @@
 }
 
 .toolbar__navigation-items a {
-    color: white;
+    color: floralwhite;
     text-decoration: none;
+    font-family: Montserrat, serif;
 }
 
 .toolbar__navigation-items a:hover,
@@ -56,19 +59,32 @@
     align-items: space-between;
 }
 
+.toolbar__login-text {
+    text-decoration: none;
+    color: lightcoral;
+    font-family: Montserrat, serif;
+}
+
+.toolbar__login a {
+    align-self: center;
+    margin: 0 auto;
+    padding: 15px 10px;
+}
+
 .iStyle {
     width: 35px;
     height: 35px;
     border-radius: 50%;
+    align-self: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 670px) {
     .toolbar__navigation-items {
         display: none;
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 671px) {
     .toolbar__toggle-button {
         display: none;
     }

@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
+import Calendar from './Calendar/Calendar';
+
+import './Schedule.css';
+
 
 class Schedule extends Component {
+  state = {
+    modalOpen: false,
+  }
+
+  modalToggle = () => {
+    this.setState((prevState) => {
+      return {modalOpen: !prevState.modalOpen};
+    })
+  }
+
   render() {
     return (
-      <div>
-        <h2>Schedule</h2>
+      <div className='schedule'>
+        <Calendar />
       </div>
     )
   }

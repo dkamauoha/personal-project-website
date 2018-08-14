@@ -41,15 +41,15 @@ class Toolbar extends Component  {
                     <div className='spacer'></div>
                     <div className="toolbar__navigation-items">
                         <ul>
-                            <Link to='/services'><li>SERVICES</li></Link>
-                            <Link to='/gallery'><li>GALLERY</li></Link>
-                            <Link to='/about'><li>ABOUT</li></Link>
-                            <Link to='/schedule'><li>BOOK</li></Link>
-                            <Link to='/appointments'><li>APPOINTMENTS</li></Link>
+                            <Link to='/services'><li>Services</li></Link>
+                            <Link to='/gallery'><li>Gallery</li></Link>
+                            <Link to='/about'><li>About</li></Link>
+                            <Link to='/schedule'><li>Book</li></Link>
+                            <Link to='/appointments'><li>Appointments</li></Link>
                         </ul>
                     </div>
                     <div className='toolbar__login'>
-                        <Link to='/'><button onClick={() => this.login()}>Login</button></Link>
+                        <Link to='/' className='toolbar__login-text'><div onClick={() => this.login()}>Login</div></Link>
                         <img src={this.state.user.profile_pic} alt=''
                             className='iStyle'/>
                     </div>

@@ -1,0 +1,15 @@
+.rbc-calendar {
+    min-height: 600px;
+}
+div.rbc-header {
+    width: 10vw;
+    display: flex;
+    align-items: center;
+}
+.rbc-now {
+    z-index: 2;
+}
+
+.modalClosed {
+    display: none;
+}
