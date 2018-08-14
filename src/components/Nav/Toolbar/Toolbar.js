@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import axios from 'axios';
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 
@@ -17,7 +16,7 @@ class Toolbar extends Component  {
 
     componentDidMount() {
         axios.get('/api/user').then(res => {
-            console.log('res.data', res.data);
+            // console.log('res.data', res.data);
             this.setState({user: res.data});
         })
       }
@@ -30,7 +29,7 @@ class Toolbar extends Component  {
 
 
     render () {
-        console.log(this.state.user);
+        // console.log(this.state.user);
         return (
             <header className="toolbar">
                 <nav className="toolbar__navigation">

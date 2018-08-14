@@ -20,7 +20,7 @@ class Calendar extends Component {
     }
 
     modalToggle = (slotInfo) => {
-        console.log(this.state.modalOpen)
+        // console.log(this.state.modalOpen)
         this.setState({
             modalOpen: !this.state.modalOpen,
             startDate: moment(slotInfo.start.toLocaleString()).format('lll'),
@@ -36,8 +36,8 @@ class Calendar extends Component {
         const dummyEvents = [
             {
               allDay: false,
-              end: new Date('August 13, 2018 11:13:00'),
-              start: new Date('August 13, 2018 11:13:00'),
+              start: new Date('August 14 , 2018 11:00:00'),
+              end: new Date('August 14 , 2018 11:00:00'),
               title: 'hi',
             },
             {
@@ -47,7 +47,7 @@ class Calendar extends Component {
               title: 'All Day Event',
             },
         ]
-        console.log(this.state);
+        // console.log(this.state);
         return (
             <div>
                 <BigCalendar 

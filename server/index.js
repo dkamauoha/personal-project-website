@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const massive = require('massive');
+const AWS = require('aws-sdk');
 const axios = require('axios');
 require('dotenv').config();
 
@@ -11,7 +12,16 @@ const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_DOMAIN, REACT_
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
+//Amazon S3 Setup
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
+  });
 
+const S3 = new AWS.S3();  
+
+//Session Setup
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
@@ -30,6 +40,7 @@ app.use((req, res, next) => {
     next()
 })
 
+//Massive Setup
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
 })
@@ -38,7 +49,7 @@ massive(CONNECTION_STRING).then(db => {
 //Auth0
 app.get('/auth/callback', async (req, res) => {
     let payload = {
-        client_id: REACT_APP_CLIENT_ID,
+        client_id: REACT_APP_CLIENT_ID,  
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
@@ -58,6 +69,38 @@ app.get('/auth/callback', async (req, res) => {
         res.redirect('/#/')
     }
 })
+
+//Amazon S3
+app.post('/api/s3', (req, res) => {
+    // the body contains the string that is the photo
+    const photo = req.body;
+  
+    // the photo string needs to be converted into a 'base 64' string for s3 to understand how to read the image
+    const buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+  
+    // this is the object that we will end to s3 with all the info about the photo, and the photo itself.
+    const params = {
+      Bucket: process.env.AWS_BUCKET,
+      Body: buf,
+      Key: photo.filename,
+      ContentType: photo.filetype,
+      ACL: 'public-read',
+    };
+  
+    // using the S3 object we made above the endpoints we will pass it the image we want uploaded and the funciton to be run when the upload is finished.
+    S3.upload(params, (err, data) => {
+      let response, code;
+      if (err) {
+        response = err;
+        code = 500;
+      } else {
+        response = data;
+        code = 200;
+      }
+      // if the upload was sucessfull give them the data, if not send them the error
+      res.status(code).send(response);
+    });
+  });
 
 //App
 app.get('/api/user', (req, res, next) => {

@@ -73,7 +73,9 @@
 
 .iStyle {
     width: 35px;
+    min-width: 35px;
     height: 35px;
+    min-width: 35px;
     border-radius: 50%;
     align-self: center;
 }
