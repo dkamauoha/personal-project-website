@@ -15,7 +15,9 @@ class Calendar extends Component {
         this.state = {
             modalOpen: false,
             startDate: '',
-            endDate: ''
+            startTime: '',
+            endDate: '',
+            endTime: ''
         }
     }
 
@@ -23,9 +25,15 @@ class Calendar extends Component {
         // console.log(this.state.modalOpen)
         this.setState({
             modalOpen: !this.state.modalOpen,
-            startDate: moment(slotInfo.start.toLocaleString()).format('lll'),
-            endDate: moment(slotInfo.end.toLocaleString()).format('lll')
+            startDate: moment(slotInfo.start.toLocaleString()).format('ll'),
+            startTime: moment(slotInfo.start.toLocaleString()).format('LT'),
+            endDate: moment(slotInfo.end.toLocaleString()).format('ll'),
+            endTime: moment(slotInfo.end.toLocaleString()).format('LT'),
         })
+    }
+
+    closeModal = () => {
+        this.setState({modalOpen: false})
     }
     
     onEventClick = (event) => {
@@ -63,7 +71,10 @@ class Calendar extends Component {
                 <ScheduleModal 
                     show={this.state.modalOpen}
                     startDate={this.state.startDate}
-                    endDate={this.state.endDate}/>
+                    startTime={this.state.startTime}
+                    endDate={this.state.endDate}
+                    endTime={this.state.endTime}
+                    closeModal={this.closeModal}/>
             </div>
         )
     }

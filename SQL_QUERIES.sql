@@ -12,3 +12,12 @@ CREATE TABLE users (
 --I used this query to add a column to my users database:
 ALTER TABLE users
 ADD COLUMN auth_id TEXT;
+
+--Create 'images' table:
+CREATE TABLE images (
+    image_id SERIAL PRIMARY KEY,
+    image_url TEXT
+)
+
+--Added the UNIQUE constraint to my user table;
+ALTER TABLE users ADD CONSTRAINT unique_auth_id UNIQUE (auth_id);

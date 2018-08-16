@@ -6,7 +6,13 @@ const AWS = require('aws-sdk');
 const axios = require('axios');
 require('dotenv').config();
 
+//Controllers
+const imageCtrl = require('./controllers/image_controller');
+const scheduleCtrl = require('./controllers/schedule_controller');
+const eventCtrl = require('./controllers/event_controller');
+
 const app = express();
+app.use( express.static( `${__dirname}/../build` ) );
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET_NAME, ALBUM_NAME, REGION } = process.env;
 
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -41,8 +47,8 @@ app.use((req, res, next) => {
 })
 
 //Massive Setup
-massive(CONNECTION_STRING).then(db => {
-    app.set('db', db)
+massive(CONNECTION_STRING).then(dbInstance => {
+    app.set('db', dbInstance)
 })
 
 //ENDPOINTS
@@ -106,5 +112,13 @@ app.post('/api/s3', (req, res) => {
 app.get('/api/user', (req, res, next) => {
     res.send(req.session.user)
 })
+
+app.post('/api/image', imageCtrl.addImage);
+
+app.get('/api/images', imageCtrl.getImages);
+
+app.post('/api/appointment',scheduleCtrl.createAppointment);
+
+app.post('/api/appointments', eventCtrl.getAllAppointments)
 
 app.listen(SERVER_PORT, () => console.log(`Server running on Port: ${SERVER_PORT}`));

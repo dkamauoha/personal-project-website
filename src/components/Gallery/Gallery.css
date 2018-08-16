@@ -1,0 +1,40 @@
+.gallery__image-container {
+    width: 50%;
+    height:30vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.gallery__image {
+    width: 30%;
+    margin-top: 10%;    
+}
+
+.gallery__carousel-container {
+    height: 30vh;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.image-gallery {
+    height: 50vh;
+}
+
+.image-gallery-image {
+    height: 38vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+}
+
+.image-gallery-image img {
+    height: 95%;
+    width: auto;
+}
+
+.image-gallery-thumbnails {
+    background-color: floralwhite;
+    margin-top: 25px;
+}
