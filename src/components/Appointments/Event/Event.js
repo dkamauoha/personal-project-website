@@ -61,7 +61,6 @@ class Event extends Component {
     }
 
     render () {
-        console.log(this.state)
         let toggleDisplay = () => {
             return this.state.editToggle 
             ? <div>
@@ -71,7 +70,7 @@ class Event extends Component {
                 <div>
                     Service: <select name='service' className='schedule-modal__services'
                                  onChange={(event) =>this.handleChange(event)}
-                                 name='service'>
+                                 >
                                  <option className='schedule-modal__option' value='haircut'>Haircut</option>
                                  <option className='schedule-modal__option' value='Color'>Color</option>
                                  <option>test</option>

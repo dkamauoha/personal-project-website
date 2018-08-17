@@ -31,6 +31,8 @@ class Calendar extends Component {
             })
     }
 
+    
+
     modalToggle = (slotInfo) => {
         // console.log(this.state.modalOpen)
         this.setState({
@@ -50,9 +52,13 @@ class Calendar extends Component {
         alert(`Event start: ${event.start}, Event end: ${event.end}`)
     }
 
+    rerenderComponent = () => {
+        this.componentDidMount();
+    }
+
     render () {
         const events = this.state.events.map(el => {
-            console.log(el);
+            // console.log(el);
             return {
                 allDay: false,
                 start: new Date(`${el.start_date} ${el.start_time}`),
@@ -60,22 +66,7 @@ class Calendar extends Component {
                 title: el.service,
             }
         })
-        console.log(events);
-        // const dummyEvents = [
-        //     {
-        //       allDay: false,
-        //       start: new Date('August 14 , 2018 11:00:00'),
-        //       end: new Date('August 14 , 2018 11:00:00'),
-        //       title: 'hi',
-        //     },
-        //     {
-        //       allDay: true,
-              
-        //       start: new Date('August 14, 2018'),
-        //       title: 'All Day Event',
-        //     },
-        // ]
-        // console.log(this.state);
+        // console.log(events);
         return (
             <div>
                 <BigCalendar 
@@ -94,7 +85,8 @@ class Calendar extends Component {
                     startTime={this.state.startTime}
                     endDate={this.state.endDate}
                     endTime={this.state.endTime}
-                    closeModal={this.closeModal}/>
+                    closeModal={this.closeModal}
+                    rerenderComponent={this.rerenderComponent}/>
             </div>
         )
     }

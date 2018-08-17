@@ -10,6 +10,10 @@ div.rbc-header {
     z-index: 2;
 }
 
+.rbc-event-label {
+    font-size: 100%;
+}
+
 .modalClosed {
     display: none;
 }

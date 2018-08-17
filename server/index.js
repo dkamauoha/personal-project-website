@@ -4,6 +4,7 @@ const session = require('express-session');
 const massive = require('massive');
 const AWS = require('aws-sdk');
 const axios = require('axios');
+const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
 
 //Controllers
@@ -13,11 +14,12 @@ const eventCtrl = require('./controllers/event_controller');
 
 const app = express();
 app.use( express.static( `${__dirname}/../build` ) );
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET_NAME, ALBUM_NAME, REGION } = process.env;
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SENDGRID_API_KEY } = process.env;
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
+sgMail.setApiKey(SENDGRID_API_KEY);
 //Amazon S3 Setup
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -107,6 +109,18 @@ app.post('/api/s3', (req, res) => {
       res.status(code).send(response);
     });
   });
+
+//SendGrid
+app.post('/api/sendemail', (req, res) => {
+    const msg = { 
+        to: 'dylantkamauoha@gmail.com',
+        from: req.body.email,
+        subject: `Message from ${req.body.name}`,
+        text: req.body.message
+    };
+    sgMail.send(msg);
+    res.sendStatus(200);
+})
 
 //App
 app.get('/api/user', (req, res, next) => {

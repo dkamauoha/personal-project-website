@@ -34,7 +34,17 @@ class ScheduleModal extends Component {
     createAppointment() {
         const { startDate, startTime, endDate, endTime, service } = this.state;
         axios.post('/api/appointment', {start_date: startDate, start_time: startTime, end_date: endDate, end_time: endTime, service: service})
-            .then(() => this.props.closeModal());
+            .then(() => {
+                this.props.rerenderComponent()
+                this.props.closeModal()
+                this.setState({
+                    startDate: '',
+                    startTime: '',
+                    endDate: '',
+                    endTime: '',
+                    service: ''
+                })
+            });
     }
 
     render() {
@@ -53,6 +63,7 @@ class ScheduleModal extends Component {
                         <select className='schedule-modal__services'
                             onChange={(event) =>this.handleChange(event)}
                             name='service'>
+                            <option>Select a Service:</option>
                             <option className='schedule-modal__option' value='haircut'>Haircut</option>
                             <option className='schedule-modal__option' value='Color'>Color</option>
                             <option>test</option>
