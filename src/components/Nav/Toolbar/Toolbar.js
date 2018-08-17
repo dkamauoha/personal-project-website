@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { updateUser, logout } from '../../../ducks/reducer';
+
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 
 import './Toolbar.css';
@@ -16,16 +18,32 @@ class Toolbar extends Component  {
 
     componentDidMount() {
         axios.get('/api/user').then(res => {
-            // console.log('res.data', res.data);
-            this.setState({user: res.data});
+            console.log('res.data', res.data);
+            let {data} = res;
+            this.props.updateUser({user: data});
         })
-      }
+    }
+
+    componentDidUpdate = (prevProps) => {
+        if (this.props.user !== prevProps.user) {
+            this.setState({user: this.props.user})
+        }
+    } 
 
     login () {
         let { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID } = process.env;
         let url = `${window.location.origin}/auth/callback`;
         window.location = `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${url}&response_type=code`;
     };
+
+
+    logout () {
+        axios.get('/api/logout')
+            .then(() => {
+                this.props.logout();
+                console.log('Successfully logged out');
+            });
+    }
 
 
     render () {
@@ -50,7 +68,8 @@ class Toolbar extends Component  {
                     <div className='toolbar__login'>
                         <Link to='/' className='toolbar__login-text'><div onClick={() => this.login()}>Login</div></Link>
                         <img src={this.state.user.profile_pic} alt=''
-                            className='iStyle'/>
+                            className='iStyle'
+                            onClick={() => this.logout()}/>
                     </div>
                 </nav>
             </header>
@@ -59,4 +78,10 @@ class Toolbar extends Component  {
     
 };
 
-export default connect()(Toolbar);
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, {updateUser, logout})(Toolbar);

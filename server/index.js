@@ -119,6 +119,17 @@ app.get('/api/images', imageCtrl.getImages);
 
 app.post('/api/appointment',scheduleCtrl.createAppointment);
 
+app.post('/api/events', eventCtrl.getEvents);
+
 app.post('/api/appointments', eventCtrl.getAllAppointments)
+
+app.put('/api/event', eventCtrl.updateEvent);
+
+app.delete('/api/event/:id', eventCtrl.deleteEvent);
+
+app.get('/api/logout', (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/#/');
+})
 
 app.listen(SERVER_PORT, () => console.log(`Server running on Port: ${SERVER_PORT}`));

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import BigCalendar from 'react-big-calendar-like-google';
 import moment from 'moment';
 
@@ -13,12 +14,21 @@ class Calendar extends Component {
     constructor() {
         super();
         this.state = {
+            events: [],
             modalOpen: false,
             startDate: '',
             startTime: '',
             endDate: '',
             endTime: ''
         }
+    }
+
+    componentDidMount() {
+        axios.post('/api/events')
+            .then(res => {
+                // console.log(res.data);
+                this.setState({events: res.data})
+            })
     }
 
     modalToggle = (slotInfo) => {
@@ -41,20 +51,30 @@ class Calendar extends Component {
     }
 
     render () {
-        const dummyEvents = [
-            {
-              allDay: false,
-              start: new Date('August 14 , 2018 11:00:00'),
-              end: new Date('August 14 , 2018 11:00:00'),
-              title: 'hi',
-            },
-            {
-              allDay: true,
+        const events = this.state.events.map(el => {
+            console.log(el);
+            return {
+                allDay: false,
+                start: new Date(`${el.start_date} ${el.start_time}`),
+                end: new Date(`${el.end_date} ${el.end_time}`),
+                title: el.service,
+            }
+        })
+        console.log(events);
+        // const dummyEvents = [
+        //     {
+        //       allDay: false,
+        //       start: new Date('August 14 , 2018 11:00:00'),
+        //       end: new Date('August 14 , 2018 11:00:00'),
+        //       title: 'hi',
+        //     },
+        //     {
+        //       allDay: true,
               
-              start: new Date('August 14, 2018'),
-              title: 'All Day Event',
-            },
-        ]
+        //       start: new Date('August 14, 2018'),
+        //       title: 'All Day Event',
+        //     },
+        // ]
         // console.log(this.state);
         return (
             <div>
@@ -63,7 +83,7 @@ class Calendar extends Component {
                     selectable
                     onSelectEvent={event => this.onEventClick(event)}
                     onSelectSlot={slotInfo => this.modalToggle(slotInfo)}
-                    events={dummyEvents}
+                    events={events}
                     step={30}
                     timeslots={2}
                     defaultView='day'
