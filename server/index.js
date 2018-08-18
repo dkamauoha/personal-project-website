@@ -14,12 +14,12 @@ const eventCtrl = require('./controllers/event_controller');
 
 const app = express();
 app.use( express.static( `${__dirname}/../build` ) );
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SENDGRID_API_KEY } = process.env;
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, } = process.env;
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-sgMail.setApiKey(SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 //Amazon S3 Setup
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -112,11 +112,17 @@ app.post('/api/s3', (req, res) => {
 
 //SendGrid
 app.post('/api/sendemail', (req, res) => {
+    
     const msg = { 
         to: 'dylantkamauoha@gmail.com',
         from: req.body.email,
         subject: `Message from ${req.body.name}`,
         text: req.body.message
+        // to: 'test@example.com',
+        // from: 'test@example.com',
+        // subject: 'Sending with SendGrid is Fun',
+        // text: 'and easy to do anywhere, even with Node.js',
+        // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
     };
     sgMail.send(msg);
     res.sendStatus(200);

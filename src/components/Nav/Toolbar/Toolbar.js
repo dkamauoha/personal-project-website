@@ -59,7 +59,7 @@ class Toolbar extends Component  {
                     <div className="toolbar__navigation-items">
                         <ul>
                             <Link to='/services'><li>Services</li></Link>
-                            <Link to='/gallery'><li>Gallery</li></Link>
+                            <Link to='/contact'><li>Contact</li></Link>
                             <Link to='/about'><li>About</li></Link>
                             <Link to='/schedule'><li>Book</li></Link>
                             <Link to='/appointments'><li>Appointments</li></Link>

@@ -70,17 +70,16 @@ class Gallery extends Component {
       }
     })
     return (
-      <div>
-        <div>
+      <div className='gallery__container'>
+        <div style={{background: '#222', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+        // style={{height: '10vh', marginTop: '5vh', backgroundColor: '#222', display: 'block', bottom: '0'}}
+        >
           <input type='file' id='real' onChange={this.handlePhoto}/>
-          <button onClick={this.sendPhoto}>upload</button>
+          <button onClick={this.sendPhoto}>upload</button>  
         </div>
-        {/* <div className='gallery__image-container'>
-          <img src={this.state.img} alt=''
-            className='gallery__image'/>
-        </div> */}
         <div className='gallery__carousel-container'>
-          <ImageGallery items={images}/>
+          <ImageGallery items={images}/>      
+           
         </div>
       </div>
     )

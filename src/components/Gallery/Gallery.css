@@ -1,6 +1,13 @@
+.gallery__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #222;
+}
+
 .gallery__image-container {
     width: 50%;
-    height:30vh;
+    height: 50vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -15,10 +22,16 @@
     height: 30vh;
     width: 100%;
     margin-top: 25px;
+    
 }
 
 .image-gallery {
     height: 50vh;
+}
+
+.image-gallery-content {
+    display: block;
+    margin-bottom: 10vh;
 }
 
 .image-gallery-image {
@@ -37,4 +50,8 @@
 .image-gallery-thumbnails {
     background-color: floralwhite;
     margin-top: 25px;
+}
+
+#real {
+    color: lightcoral;
 }

@@ -3,3 +3,8 @@
 body {
     background-color: mistyrose;
 }
+
+.app__component-display {
+    height: calc(100% - 64px);
+    margin-top: 64px;
+}
