@@ -13,10 +13,6 @@ class SendEmail extends Component {
         };
     }
 
-    componentDidMount() {
-        this.setState({name:'',email:'',message:''})
-    }
-
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
@@ -25,7 +21,11 @@ class SendEmail extends Component {
         const { name, email, message } = this.state;
         axios.post('/api/sendemail', {name: name, email: email, message: message})
             .then(() => {
-                this.componentDidMount();
+                this.setState({
+                    name: '',
+                    email: '',
+                    message: '',
+                })
                 alert('Your Message has been sent!');
             })
     }
@@ -36,25 +36,25 @@ class SendEmail extends Component {
             <div style={{height: '100%'}}>
                 <div className='sendemail__content-container'>
                     <div>SendEmail</div>
-                    <div style={{height: '15vh', width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+                    <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}
                         >
                         <p className='sendemail__description'>Enter your name:</p>
-                        <input style={{maxWidth: '450px'}}
+                        <input 
                             name='name'
-                            defaultValue={this.state.name}
+                            value={this.state.name}
                             onChange={(e) => this.handleChange(e)}/>
                     </div>
-                    <div style={{height: '15vh', width: '50%', display: 'flex', flexDirection: 'column'}}>
+                    <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}>
                         <p className='sendemail__description'>Enter your email below:</p>
                         <input name='email'
-                            defaultValue={this.state.email}
+                            value={this.state.email}
                             onChange={(e) => this.handleChange(e)}/>
                     </div>
-                    <div style={{height: '15vh', width: '50%', display: 'flex', flexDirection: 'column'}}
+                    <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}
                         >
-                        <p className='sendemail__description'></p>
+                        <p className='sendemail__description'>Type your message below:</p>
                         <textarea  name='message'
-                            defaultValue={this.state.message}
+                            value={this.state.message}
                             onChange={(e) => this.handleChange(e)}/>
                     </div>
                     <button onClick={() => this.sendEmail()}>Send</button>

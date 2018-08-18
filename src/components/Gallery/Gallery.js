@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import ImageGallery from 'react-image-gallery';
+import { connect } from 'react-redux';
 
 import "react-image-gallery/styles/css/image-gallery.css";
 import './Gallery.css';
@@ -23,7 +24,6 @@ class Gallery extends Component {
 
   componentDidMount() {
     axios.get('/api/images').then(res => {
-      console.log(res.data);
       this.setState({images: res.data});
     })
   }
@@ -56,13 +56,13 @@ class Gallery extends Component {
   // when clicked it upload
   sendPhoto(event) {
     return axios.post('/api/s3', this.state).then(response => {
-      console.log(response)
       this.addImageToDB(response.data.Location);
     });
 
   }
 
   render() {
+    console.log(this.props.user);
     const images = this.state.images.map((image) => {
       return {
         original: `${image.image_url}`,
@@ -71,19 +71,26 @@ class Gallery extends Component {
     })
     return (
       <div className='gallery__container'>
-        <div style={{background: '#222', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-        // style={{height: '10vh', marginTop: '5vh', backgroundColor: '#222', display: 'block', bottom: '0'}}
-        >
-          <input type='file' id='real' onChange={this.handlePhoto}/>
-          <button onClick={this.sendPhoto}>upload</button>  
-        </div>
+        {this.props.user.permissions === 'admin' 
+          ? <div style={{background: '#222', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+          // style={{height: '10vh', marginTop: '5vh', backgroundColor: '#222', display: 'block', bottom: '0'}}
+          >
+            <input type='file' id='real' onChange={this.handlePhoto}/>
+            <button onClick={this.sendPhoto}>upload</button>  
+          </div>
+          : <div></div>}
         <div className='gallery__carousel-container'>
           <ImageGallery items={images}/>      
-           
         </div>
       </div>
     )
   }
 }
 
-export default Gallery;
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Gallery);

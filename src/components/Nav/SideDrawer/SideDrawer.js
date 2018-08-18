@@ -13,11 +13,11 @@ const SideDrawer = props => {
         <nav className={drawerClasses}>
             <ul>
                 <Link to='/' className='side-drawer__links'><li>HOME</li></Link>
-                <Link to='/services' className='side-drawer__links'><li>SERVICES</li></Link>
-                <Link to='/contact' className='side-drawer__links'><li>CONTACT</li></Link>
                 <Link to='/about' className='side-drawer__links'><li>ABOUT</li></Link>
                 <Link to='/schedule' className='side-drawer__links'><li>BOOK</li></Link>
                 <Link to='/appointments' className='side-drawer__links'><li>APPOINTMENTS</li></Link>
+                <Link to='/services' className='side-drawer__links'><li>SERVICES</li></Link>
+                <Link to='/contact' className='side-drawer__links'><li>CONTACT</li></Link>
             </ul>
         </nav>
     )

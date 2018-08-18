@@ -1,6 +1,7 @@
-.home__email-container {
-    height: 40vh;
+.home__container {
+    height: 60vh;
     width: 100%;
-    
+    display: flex;
+    flex-direction: column;
 }
 

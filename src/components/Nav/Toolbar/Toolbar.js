@@ -18,9 +18,8 @@ class Toolbar extends Component  {
 
     componentDidMount() {
         axios.get('/api/user').then(res => {
-            console.log('res.data', res.data);
-            let {data} = res;
-            this.props.updateUser({user: data});
+            // console.log(res.data); 
+            this.props.updateUser({user: res.data});
         })
     }
 
@@ -59,10 +58,10 @@ class Toolbar extends Component  {
                     <div className="toolbar__navigation-items">
                         <ul>
                             <Link to='/services'><li>Services</li></Link>
-                            <Link to='/contact'><li>Contact</li></Link>
-                            <Link to='/about'><li>About</li></Link>
                             <Link to='/schedule'><li>Book</li></Link>
                             <Link to='/appointments'><li>Appointments</li></Link>
+                            <Link to='/contact'><li>Contact</li></Link>
+                            <Link to='/about'><li>About</li></Link>
                         </ul>
                     </div>
                     <div className='toolbar__login'>

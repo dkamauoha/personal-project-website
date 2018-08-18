@@ -3,10 +3,9 @@ import './Home.css';
 
 export default function Home () {
     return (
-        <div>
+        <div className='home__container'>
             <h2>Home</h2>
-            <div className='home__email-container'>
-            </div>
+
             
         </div>
     )

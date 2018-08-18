@@ -42,7 +42,10 @@ app.use((req, res, next) => {
             full_name: '',
             email: '',
             profile_pic: '',
-            auth_id: ''
+            auth_id: '',
+            phone: null,
+            permissions: '',
+            user_id: null
         }
     }
     next()
