@@ -1,0 +1,38 @@
+.services__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+   
+}
+
+.services__header {
+    font-size: 2.5em;
+    color: #222;
+    
+}
+
+.services__eyelash-header {
+    font-size: 1.75em;}
+
+.services__eyelash-type {
+    color:#222;
+    font-size: 1.5em;
+}
+
+.services__eyelash {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.services__service-container {
+    width: 75%;
+    max-width: 350px;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-between;
+}
