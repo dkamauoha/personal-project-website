@@ -10,8 +10,16 @@
     font-family: Montserrat, serif;
 }
 
-.sendemail__description {
-    
+.sendemail__button {
+    margin: 2vh 0;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    color: floralwhite;
+    background-color: lightcoral;
+    font-weight: 600;
+    font-size: 1.25em;
 }
 
 textarea {

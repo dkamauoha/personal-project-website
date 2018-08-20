@@ -37,29 +37,33 @@ class SendEmail extends Component {
             <div style={{height: '100%'}}>
                 <About />
                 <div className='sendemail__content-container'>
-                    <div style={{marginTop: '15px'}}>SendEmail</div>
+                    <div style={{marginTop: '15px', marginBottom: '10px'}}>Send an Email</div>
                     <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}
                         >
                         <p className='sendemail__description'>Enter your name:</p>
                         <input 
                             name='name'
+                            style={{border: 'none'}}
                             value={this.state.name}
                             onChange={(e) => this.handleChange(e)}/>
                     </div>
                     <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}>
                         <p className='sendemail__description'>Enter your email below:</p>
-                        <input name='email'
+                        <input 
+                            name='email'
+                            style={{border: 'none'}}
                             value={this.state.email}
                             onChange={(e) => this.handleChange(e)}/>
                     </div>
                     <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}
                         >
                         <p className='sendemail__description'>Type your message below:</p>
-                        <textarea  name='message'
+                        <textarea  
+                            name='message'
                             value={this.state.message}
                             onChange={(e) => this.handleChange(e)}/>
                     </div>
-                    <button onClick={() => this.sendEmail()}>Send</button>
+                    <button className='sendemail__button' onClick={() => this.sendEmail()}>Send</button>
                 </div>                     
 
             </div>
