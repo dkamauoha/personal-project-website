@@ -48,7 +48,7 @@ class ScheduleModal extends Component {
     }
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         let drawerClasses = 'schedule-modal';
         if (this.props.show) {
             drawerClasses= 'schedule-modal open'
@@ -64,16 +64,18 @@ class ScheduleModal extends Component {
                             onChange={(event) =>this.handleChange(event)}
                             name='service'>
                             <option>Select a Service:</option>
-                            <option className='schedule-modal__option' value='haircut'>Haircut</option>
-                            <option className='schedule-modal__option' value='Color'>Color</option>
-                            <option>test</option>
-                            <option>test</option>
-                            <option>test</option>
-                            <option>test</option>
-                            <option>test</option>
-                            <option>test</option>
-                            <option>test</option>
-
+                            <option className='schedule-modal__option'>Classic Full Set</option>
+                            <option className='schedule-modal__option'>Classic 2 Week Fill</option>
+                            <option className='schedule-modal__option'>Classic 3 Week Fill</option>
+                            <option className='schedule-modal__option'>Classic 4 Week Fill</option>
+                            <option className='schedule-modal__option'>Classic Mini Fill</option>
+                            <option className='schedule-modal__option'>Volume Full Set</option>
+                            <option className='schedule-modal__option'>Volume 2 Week Fill</option>
+                            <option className='schedule-modal__option'>Volume 3 Week Fill</option>
+                            <option className='schedule-modal__option'>Volume 4 Week Fill</option>
+                            <option className='schedule-modal__option'>Volume Mini Fill</option>
+                            <option className='schedule-modal__option'>Extension Removal</option>
+                            <option className='schedule-modal__option'>Add Colored Lashes</option>
                         </select>
                     </div>
                     <div style={{width: '100%', alignSelf: 'center'}}>

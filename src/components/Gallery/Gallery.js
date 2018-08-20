@@ -62,7 +62,7 @@ class Gallery extends Component {
   }
 
   render() {
-    console.log(this.props.user);
+    // console.log(this.props.user);
     const images = this.state.images.map((image) => {
       return {
         original: `${image.image_url}`,

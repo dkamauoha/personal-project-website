@@ -14,3 +14,9 @@
     text-align: center;
 }
 
+@media(min-height: 725px) {
+    .home__container {
+        height: 30vh;
+    }
+}
+

@@ -18,7 +18,7 @@ class Appointments extends Component {
   componentDidMount () {
     axios.post('/api/appointments')
       .then(res => {
-        console.log(res);
+        // console.log(res);
         this.props.updateEvents({events: res.data})
       })
   }
@@ -28,7 +28,7 @@ class Appointments extends Component {
   }
 
   render() {
-    console.log(this.props.events[0])
+    // console.log(this.props.events[0])
     const events = this.props.events.map((event, i) => (
      <div key={i}>
         <Event

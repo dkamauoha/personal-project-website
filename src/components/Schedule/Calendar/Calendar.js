@@ -35,7 +35,7 @@ class Calendar extends Component {
 
     modalToggle = (slotInfo) => {
         // console.log(this.state.modalOpen)
-        console.log(slotInfo.start)
+        // console.log(slotInfo.start)
         this.setState({
             modalOpen: !this.state.modalOpen,
             startDate: moment(slotInfo.start.toLocaleString()).format('ll'),

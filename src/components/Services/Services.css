@@ -1,3 +1,10 @@
+.services__fullscreen {    
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    /* max-width: 750px; */
+}
+
 .services__container {
     width: 100%;
     height: 100%;
@@ -5,13 +12,13 @@
     flex-direction: column;
     align-items: center;
     font-family: Montserrat, sans-serif;
+    
    
 }
 
-.services__header {
+div.services__header {
     font-size: 2.5em;
     color: #222;
-    
 }
 
 .services__eyelash-header {
@@ -36,3 +43,22 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media(min-width: 742px) {
+    .services__fullscreen {
+        display: flex;
+        flex-direction: row;
+        padding-top: 10vh;
+    }
+
+    .services__container {
+        width: 50%;
+    }
+
+    .services__image {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+}
+

@@ -60,18 +60,22 @@ class Event extends Component {
                 <div className='event__info-div'>Start time: <input name='start_time' defaultValue={this.props.event.start_time} onChange={(e) => this.handleChange(e) }/></div>
                 <div className='event__info-div'>End time: <input name='end_time' defaultValue={this.props.event.end_time} onChange={(e) => this.handleChange(e) }/></div>
                 <div className='event__dropdown'>
-                    Service: <select name='service' className='schedule-modal__services'
+                    Service: <select className='schedule-modal__services'
                                  onChange={(event) =>this.handleChange(event)}
-                                 >
-                                 <option className='schedule-modal__option' value='haircut'>Haircut</option>
-                                 <option className='schedule-modal__option' value='Color'>Color</option>
-                                 <option>test</option>
-                                 <option>test</option>
-                                 <option>test</option>
-                                 <option>test</option>
-                                 <option>test</option>
-                                 <option>test</option>
-                                 <option>test</option>
+                                 name='service'>
+                                 <option>Select a Service:</option>
+                                 <option className='schedule-modal__option'>Classic Full Set</option>
+                                 <option className='schedule-modal__option'>Classic 2 Week Fill</option>
+                                 <option className='schedule-modal__option'>Classic 3 Week Fill</option>
+                                 <option className='schedule-modal__option'>Classic 4 Week Fill</option>
+                                 <option className='schedule-modal__option'>Classic Mini Fill</option>
+                                 <option className='schedule-modal__option'>Volume Full Set</option>
+                                 <option className='schedule-modal__option'>Volume 2 Week Fill</option>
+                                 <option className='schedule-modal__option'>Volume 3 Week Fill</option>
+                                 <option className='schedule-modal__option'>Volume 4 Week Fill</option>
+                                 <option className='schedule-modal__option'>Volume Mini Fill</option>
+                                 <option className='schedule-modal__option'>Extension Removal</option>
+                                 <option className='schedule-modal__option'>Add Colored Lashes</option>
                              </select>
                 </div>
                 <div className='event__button-container'>

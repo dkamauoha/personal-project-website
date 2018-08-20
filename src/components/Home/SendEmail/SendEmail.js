@@ -32,7 +32,7 @@ class SendEmail extends Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div style={{height: '100%'}}>
                 <About />
