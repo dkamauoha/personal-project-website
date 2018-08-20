@@ -61,7 +61,7 @@ class Toolbar extends Component  {
                             <Link to='/schedule'><li>Book</li></Link>
                             <Link to='/appointments'><li>Appointments</li></Link>
                             <Link to='/contact'><li>Contact</li></Link>
-                            <Link to='/about'><li>About</li></Link>
+                            {/* <Link to='/about'><li>About</li></Link> */}
                         </ul>
                     </div>
                     <div className='toolbar__login'>

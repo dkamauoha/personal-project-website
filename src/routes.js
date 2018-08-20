@@ -17,7 +17,7 @@ const routes = (
                 <Gallery />
             </div>
         )}/>
-        <Route component={About} path='/about'/>
+        {/* <Route component={About} path='/about'/> */}
         <Route component={Appointments} path='/appointments'/>
         <Route component={Services} path='/services'/>
         <Route component={Schedule} path='/schedule'/>

@@ -80,7 +80,7 @@ class Gallery extends Component {
           </div>
           : <div></div>}
         <div className='gallery__carousel-container'>
-          <ImageGallery items={images}/>      
+          <ImageGallery items={images}/>
         </div>
       </div>
     )

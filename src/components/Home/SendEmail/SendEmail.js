@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import About from '../../About/About';
 import './SendEmail.css';
 
 class SendEmail extends Component {
@@ -34,8 +35,9 @@ class SendEmail extends Component {
         console.log(this.state)
         return (
             <div style={{height: '100%'}}>
+                <About />
                 <div className='sendemail__content-container'>
-                    <div>SendEmail</div>
+                    <div style={{marginTop: '15px'}}>SendEmail</div>
                     <div style={{height: '12vh', width: '50%', display: 'flex', flexDirection: 'column'}}
                         >
                         <p className='sendemail__description'>Enter your name:</p>

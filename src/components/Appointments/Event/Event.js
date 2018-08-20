@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './Event.css';
+
 class Event extends Component {
     constructor() {
         super();
@@ -12,16 +14,6 @@ class Event extends Component {
             service: ''
         };
     }
-
-    // componentDidMount() {
-    //     this.setState({
-    //         appointment_id: this.props.event.appointment_id,
-    //         start_date: this.props.event.start_date,
-    //         start_time: this.props.event.start_time,
-    //         end_time: this.props.event.end_time,
-    //         service: this.props.event.service
-    //     });
-    // };
 
     handleChange(event) {
         this.setState({
@@ -63,11 +55,11 @@ class Event extends Component {
     render () {
         let toggleDisplay = () => {
             return this.state.editToggle 
-            ? <div>
-                <div>Date: <input name='start_date' defaultValue={this.props.event.start_date} onChange={(e) => this.handleChange(e) }/></div>
-                <div>Start time: <input name='start_time' defaultValue={this.props.event.start_time} onChange={(e) => this.handleChange(e) }/></div>
-                <div>End time: <input name='end_time' defaultValue={this.props.event.end_time} onChange={(e) => this.handleChange(e) }/></div>
-                <div>
+            ? <div className='event__event-edit-container'>
+                <div className='event__info-div'>Date: <input name='start_date' defaultValue={this.props.event.start_date} onChange={(e) => this.handleChange(e) }/></div>
+                <div className='event__info-div'>Start time: <input name='start_time' defaultValue={this.props.event.start_time} onChange={(e) => this.handleChange(e) }/></div>
+                <div className='event__info-div'>End time: <input name='end_time' defaultValue={this.props.event.end_time} onChange={(e) => this.handleChange(e) }/></div>
+                <div className='event__dropdown'>
                     Service: <select name='service' className='schedule-modal__services'
                                  onChange={(event) =>this.handleChange(event)}
                                  >
@@ -82,23 +74,23 @@ class Event extends Component {
                                  <option>test</option>
                              </select>
                 </div>
-                <div>
-                    <button onClick={this.updateEvent}>Save Appointment</button>
-                    <button onClick={this.deleteEvent}>Delete Appointment</button>
+                <div className='event__button-container'>
+                    <button className='event__button' onClick={this.updateEvent}>Save Appointment</button>
+                    <button className='event__button' onClick={this.deleteEvent}>Delete Appointment</button>
                 </div>
               </div>
-            : <div>
-                <div>Date: {this.props.event.start_date}</div>
-                <div>Time: {this.props.event.start_time} - {this.props.event.end_time}</div>
-                <div>Service: {this.props.event.service}</div>
-                <div>
-                    <button onClick={this.toggleEdit}>Update Appointment</button>
-                    <button onClick={this.deleteEvent}>Delete Appointment</button>
+            : <div className='event__event-container'>
+                <div className='event__info-div'>Date: {this.props.event.start_date}</div>
+                <div className='event__info-div'>Time: {this.props.event.start_time} - {this.props.event.end_time}</div>
+                <div className='event__info-div'>Service: {this.props.event.service}</div>
+                <div className='event__button-container'>
+                    <button className='event__button' onClick={this.toggleEdit}>Update Appointment</button>
+                    <button className='event__button' onClick={this.deleteEvent}>Delete Appointment</button>
                 </div>
               </div>
         }
         return (
-            <div>
+            <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 {toggleDisplay()}
             </div>
         )

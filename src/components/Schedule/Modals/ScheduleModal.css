@@ -51,7 +51,7 @@
     text-align: center;
     margin-top: 6px;
     padding-top: 9%;
-    font-size: 2em;
+    font-size: 1.75em;
 }
 
 .schedule-modal__time {
@@ -80,5 +80,6 @@
 
 .schedule-modal__button {
     align-self: center;
+    background-color: mistyrose;
 }
 

@@ -1,0 +1,45 @@
+.event__event-edit-container {
+    height: 30vh;
+    width: 75%;
+    min-width: 210px;
+    max-width: 320px;
+    font-family: Montserrat, sans-serif;
+    background-color: floralwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 3vh;
+    border: 3px solid lightcoral;
+}
+
+.event__event-container {
+    height: 25vh;
+    width: 75%;
+    min-width: 210px;
+    max-width: 320px;
+    font-family: Montserrat, sans-serif;
+    background-color: floralwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 3vh;
+    border: 3px solid lightcoral;
+}
+
+.event__info-div {
+    margin: 1vh 0;
+    margin-left: 5px;
+}
+
+.event__button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event__button {
+    background-color: lightcoral;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    width: 100px;
+}

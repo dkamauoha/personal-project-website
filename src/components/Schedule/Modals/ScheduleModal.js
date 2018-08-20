@@ -76,8 +76,8 @@ class ScheduleModal extends Component {
 
                         </select>
                     </div>
-                    <div className='schedule-modal__button'>
-                        <button onClick={() => this.createAppointment()}>Set Appointment</button>
+                    <div style={{width: '100%', alignSelf: 'center'}}>
+                        <button className='schedule-modal__button' onClick={() => this.createAppointment()}>Set Appointment</button>
                     </div>
                 </div>
                 
